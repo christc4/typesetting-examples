@@ -5,7 +5,7 @@ Perhaps, the biggest fall from grace in computing is the death of document forma
 
 ## Personal examples
 
-Anything noteworthy are probably my larger projects, written in LaTeX, those being, [The Gospel of St. John the Divine](https://github.com/christc4/john.git) and my [Wordlist](https://github.com/christc4/words.git)
+Anything noteworthy are probably my larger projects, written in LaTeX, those being, [The Gospel of St. John the Divine](https://github.com/christc4/john.git) and my [Wordlist](https://github.com/christc4/words.git), you may find here and there some basic templates I've contributed, in this repo
 
 ## Credits
 Thank you to these wonderful people for everything else .
