@@ -1,0 +1,550 @@
+%PDF-1.3
+%‚„œ”
+2 0 obj
+<<
+/Length 2595
+>>
+stream
+0.745 0.745 0.745 rg
+/GS1 gs
+1 i 
+144 708 m
+144 693.096 126.259 681 104.4 681 c
+82.541 681 64.8 693.096 64.8 708 c
+64.8 722.904 82.541 735 104.4 735 c
+126.259 735 144 722.904 144 708 c
+f
+BT
+/TT2 1 Tf
+10 0 0 10 72 696 Tm
+0.1 0.5 0.2 rg
+0 Tc
+0 Tw
+(CS 265 - Computer Theory)Tj
+/TT4 1 Tf
+12 0 0 12 263.172 645 Tm
+0 g
+(Lecture 1)Tj
+10 0 0 10 72 597 Tm
+0.1 0.5 0.2 rg
+(chapter 1 - discrete math review)Tj
+/TT2 1 Tf
+0 g
+0 -1.92 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(graph theory)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(set theory)Tj
+/TT4 1 Tf
+0.1 0.5 0.2 rg
+-2.5 -2.4 TD
+(chapter 2 - Deterministic )Tj
+/TT5 1 Tf
+11.4956 0 TD
+(ﬁ)Tj
+/TT4 1 Tf
+0.6108 0 TD
+[(nite Automata \(DF)55(A\))]TJ
+/TT2 1 Tf
+0 g
+-12.1064 -1.92 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(feed machine an input string, it gives back an output string)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(accept state \(double cir)18(cle\))]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(if im not ther)18(e, the machine r)18(ejects the input string)]TJ
+0 -2.4 TD
+(applications)Tj
+ET
+0 0 0 RG
+1 J 1 j 0.4 w 10 M []0 d
+96.99 461.31 m
+150.99 461.31 l
+S
+BT
+10 0 0 10 72 448.2 Tm
+0 g
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(r)18(epr)18(esent gates)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(lexical analysis)Tj
+/TT4 1 Tf
+0.1 0.5 0.2 rg
+-2.5 -2.4 TD
+(chapter 3 - regular expressions)Tj
+/TT2 1 Tf
+0 g
+0 -1.92 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(strings that expand to a set of strings)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(operators: or |, concatenation . , star *)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(a)-250(|)-250(b)-250(--> {a, b})]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(a)-250(.)-250(b)-250(--> {ab})]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(a* --> {empty string, a, aa, aaa, ...})Tj
+/TT4 1 Tf
+0.1 0.5 0.2 rg
+-2.5 -2.4 TD
+(chapter 4)Tj
+T*
+(chapter 5 - context free grammars)Tj
+/TT2 1 Tf
+0 0 0 rg
+0 -1.56 TD
+[(e)-250(i)0(s)-250(the empty string \(length 0\))]TJ
+0 g
+T*
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(S)-250(--> AB)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(A)-250(--> Aa | e)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(B)-250(--> Bb | e)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(start symbol)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(parse string)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(pr)18(oduction r)8(ules)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(S)-250(--> AB --> ABb --> Bb --> b)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(accepts any string such that you can derive the string fr)18(om the start symbol)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(used in parser)Tj
+0 g
+15.6155 -9.9 TD
+(30 January 2020)Tj
+ET
+endstream
+endobj
+3 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT5 6 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+10 0 obj
+<<
+/Length 1299
+>>
+stream
+BT
+/TT2 1 Tf
+10 0 0 10 282.17 744 Tm
+0 g
+/GS1 gs
+0 Tc
+0 Tw
+(-2-)Tj
+/TT4 1 Tf
+0.1 0.5 0.2 rg
+-21.017 -3.6 TD
+(chapter 6 - pushdown automata)Tj
+/TT2 1 Tf
+0 g
+0 -1.92 TD
+(ï)Tj
+/TT6 1 Tf
+0 0 0 rg
+2.5 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.605 0 TD
+(nite state machine with a stack)Tj
+0 g
+-3.1049 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(transition states based on input and stor)18(e)-250(memory)]TJ
+/TT4 1 Tf
+0.1 0.5 0.2 rg
+-2.5 -3.6 TD
+(chapter 7 - turing machines)Tj
+/TT2 1 Tf
+0 0 0 rg
+0 -1.56 TD
+[(íhar)18(dwar)18(eí)]TJ
+ET
+0 0 0 RG
+1 J 1 j 0.4 w 10 M []0 d
+1 i 
+72.03 619.11 m
+120.15 619.11 l
+S
+BT
+10 0 0 10 72 606 Tm
+0 g
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(tape)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(input string on tape)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(in)Tj
+/TT6 1 Tf
+0.873 0 TD
+(ﬁ)Tj
+/TT2 1 Tf
+0.605 0 TD
+(nite tape)Tj
+0 g
+-3.978 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(r)18(ead/write head)]TJ
+-2.5 -2.76 TD
+[(ísoftwar)18(eí)]TJ
+ET
+72.03 529.11 m
+115.71 529.11 l
+S
+BT
+10 0 0 10 72 516 Tm
+0 g
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+(transition function)Tj
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(set of r)8(ules i have to follow to move acr)18(oss this tape)]TJ
+0 g
+-2.5 -1.56 TD
+(ï)Tj
+0 0 0 rg
+2.5 0 TD
+[(transition function gets complex \(can r)18(epr)18(esent any algo\))]TJ
+0 g
+15.6155 -46.08 TD
+(30 January 2020)Tj
+ET
+endstream
+endobj
+11 0 obj
+<<
+/ProcSet [/PDF /Text ]
+/Font <<
+/TT2 4 0 R
+/TT4 5 0 R
+/TT6 12 0 R
+>>
+/ExtGState <<
+/GS1 7 0 R
+>>
+>>
+endobj
+7 0 obj
+<<
+/Type /ExtGState
+/SA false
+/SM 0.02
+/OP false
+/op false
+/OPM 1
+/BG2 /Default
+/UCR2 /Default
+/HT /Default
+/TR2 /Default
+>>
+endobj
+13 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 822
+/CapHeight 692
+/Descent -277
+/Flags 34
+/FontBBox [-166 -283 1021 927]
+/FontName /Palatino-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 469
+/StemH 84
+>>
+endobj
+14 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 822
+/CapHeight 681
+/Descent -277
+/Flags 262178
+/FontBBox [-152 -266 1000 924]
+/FontName /Palatino-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 471
+/StemH 122
+>>
+endobj
+15 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 822
+/CapHeight 681
+/Descent -277
+/Flags 262178
+/FontBBox [-152 -266 1000 924]
+/FontName /Palatino-Bold
+/ItalicAngle 0
+/StemV 133
+/XHeight 471
+/StemH 122
+>>
+endobj
+16 0 obj
+<<
+/Type /FontDescriptor
+/Ascent 822
+/CapHeight 692
+/Descent -277
+/Flags 34
+/FontBBox [-166 -283 1021 927]
+/FontName /Palatino-Roman
+/ItalicAngle 0
+/StemV 84
+/XHeight 469
+/StemH 84
+>>
+endobj
+4 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 149
+/Widths [250 0 0 0 0 0 0 0 333 333 389 0 250 333 250 606 
+500 0 500 500 0 500 500 0 0 0 250 0 0 0 606 0 
+0 778 611 709 0 0 0 0 0 0 333 0 0 0 0 0 
+0 0 0 525 613 0 0 0 0 0 0 0 0 0 0 0 
+0 500 553 444 611 479 333 556 582 291 234 556 291 883 582 546 
+601 0 395 424 326 603 565 834 516 556 0 333 606 333 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 0 278 0 0 606 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Palatino-Roman
+/FontDescriptor 13 0 R
+>>
+endobj
+5 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 32
+/LastChar 120
+/Widths [250 0 0 0 0 0 0 0 333 333 0 0 0 333 0 0 
+0 500 500 500 500 500 500 500 0 0 0 0 0 0 0 0 
+0 778 0 0 833 0 556 0 0 0 0 0 611 0 0 0 
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+0 500 0 444 611 500 389 556 611 333 0 0 333 889 611 556 
+611 0 389 444 333 611 556 833 500 ]
+/Encoding /WinAnsiEncoding
+/BaseFont /Palatino-Bold
+/FontDescriptor 14 0 R
+>>
+endobj
+6 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 222
+/Widths [611 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Palatino-Bold
+/FontDescriptor 15 0 R
+>>
+endobj
+12 0 obj
+<<
+/Type /Font
+/Subtype /TrueType
+/FirstChar 222
+/LastChar 222
+/Widths [605 ]
+/Encoding /MacRomanEncoding
+/BaseFont /Palatino-Roman
+/FontDescriptor 16 0 R
+>>
+endobj
+1 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 3 0 R
+/Contents 2 0 R
+>>
+endobj
+9 0 obj
+<<
+/Type /Page
+/Parent 8 0 R
+/Resources 11 0 R
+/Contents 10 0 R
+>>
+endobj
+17 0 obj
+<<
+/S /D
+>>
+endobj
+18 0 obj
+<<
+/Nums [0 17 0 R ]
+>>
+endobj
+8 0 obj
+<<
+/Type /Pages
+/Kids [1 0 R 9 0 R]
+/Count 2
+/MediaBox [0 0 612 792]
+>>
+endobj
+19 0 obj
+<<
+/CreationDate (D:20200130190035-05'00')
+/ModDate (D:20200130190035-05'00')
+/Producer (Apple pstopdffilter)
+>>
+endobj
+20 0 obj
+<<
+/Type /Catalog
+/Pages 8 0 R
+/PageLabels 18 0 R
+>>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000006476 00000 n 
+0000000016 00000 n 
+0000002663 00000 n 
+0000005201 00000 n 
+0000005711 00000 n 
+0000006130 00000 n 
+0000004251 00000 n 
+0000006706 00000 n 
+0000006556 00000 n 
+0000002780 00000 n 
+0000004132 00000 n 
+0000006302 00000 n 
+0000004391 00000 n 
+0000004591 00000 n 
+0000004796 00000 n 
+0000005001 00000 n 
+0000006638 00000 n 
+0000006666 00000 n 
+0000006793 00000 n 
+0000006922 00000 n 
+trailer
+<<
+/Size 21
+/Root 20 0 R
+/Info 19 0 R
+/ID [<e2165f149d0ee94a062c47bd82e2e223><e2165f149d0ee94a062c47bd82e2e223>]
+>>
+startxref
+6991
+%%EOF

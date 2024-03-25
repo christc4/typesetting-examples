@@ -12,6 +12,7 @@ Thank you to these wonderful people for everything else .
 - The late [Don Lancaster](https://www.tinaja.com/)
 - [Arnav Bandekar](https://github.com/jackypacky?tab=repositories)
 - [Diomidis Spinellis](https://www.spinellis.gr/index.html.var), unix troff
+- [Josh Natis](https://josh8.com/), wrote groff CS notes, for 2020 lectures
 - [Luke Smith](https://lukesmith.xyz)
 - [Daniel C. Nygren](https://github.com/dnygren), .ps examples
 - [Plainoldcheese](https://plainoldcheese.neocities.org/), groff-guide
