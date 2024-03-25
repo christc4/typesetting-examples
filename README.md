@@ -8,3 +8,4 @@ Anything noteworthy are probably my larger projects, written in LaTeX, those bei
 Thank you to these wonderful people for everything else .
 - The late [Don Lancaster](https://www.tinaja.com/)
 - [Arnav Bandekar](https://github.com/jackypacky?tab=repositories)
+- [Luke Smith](https://lukesmith.xyz)
