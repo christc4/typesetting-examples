@@ -1,0 +1,26 @@
+%!PS
+
+% definir escala
+/scale_cm 1 2.54 div 72 mul def
+scale_cm scale_cm scale
+
+% definir tamaño del lado y altura
+/side 5 def
+/height side 3 sqrt mul 2 div def
+
+% calcular el desplazamiento para centrar el triángulo
+/paper_width 21 def
+/paper_height 29.7 def
+
+/dx paper_width side sub 2 div def 
+/dy paper_height height sub 2 div def
+
+% dibujar
+newpath % nuevo path
+dx dy moveto % mover el puntero al inicio
+side 0 rlineto % línea en eje x
+side 2 div neg height rlineto % línea hacia el vértice superior
+dx dy lineto % vuelta al origen (opcional ya que closepath lo hace)
+closepath
+fill % dibujar
+showpage

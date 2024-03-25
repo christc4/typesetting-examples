@@ -1,0 +1,44 @@
+%!PS
+
+% El enunciado de este ejercicio fue leído después del del ejercicio anterior. Este documento contiene una copia de la función connectDots del ejercicio 3.3
+% Se asume pues, igual que en el libro de texto de la asignatura, que los puntos están ordenados, y que no se trata de encontrar el camino que los une por el que ningún segmento se corta con otro.
+
+/ppi 72 def % adobe points per inch
+% centro de la hoja
+/paper_width 21 def
+/paper_height 29.7 def
+/dx paper_width 2 div def 
+/dy paper_height 2 div def
+/escala_cm 1 2.54 div ppi mul def
+/pi 3.14159 def
+
+% unir los puntos, recibe un array de 0 o más puntos
+% [[x, y]..] -> path
+/connectDots {
+    1 dict begin
+    /dots exch def
+    dots length 1 gt { % al menos 2
+        dots 0 get 0 get dots 0 get 1 get moveto % punto inicial
+        1 1 dots length 1 sub { % puntos - 1 veces
+            /i exch def % iterator
+            dots i get 0 get dots i get 1 get lineto % trazar
+        } for
+    } if
+    end
+} def
+
+% constante. Ejemplo del libro.
+/poligono [
+    [1 0][72 cos 72 sin][144 cos 144 sin][216 cos 216 sin][288 cos 288 sin]
+] def
+
+% escala y moverse al centro
+escala_cm dup scale
+1 escala_cm div setlinewidth
+dx dy translate
+
+newpath
+poligono connectDots
+closepath
+stroke
+showpage

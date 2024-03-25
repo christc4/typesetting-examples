@@ -1,0 +1,140 @@
+%!PS
+
+/ppi 72 def
+/paper_width 21 def
+/paper_height 29.7 def
+/dx paper_width 2 div def 
+/dy paper_height 2 div def
+/escala_cm 1 2.54 div ppi mul def
+/pi 3.14159 def
+/fix 1 256 div def
+
+/connectDots {
+    1 dict begin
+    /dots exch def
+    dots length 1 gt { % al menos 2
+        dots 0 get 0 get dots 0 get 1 get moveto % punto inicial
+        1 1 dots length 1 sub { % puntos - 1 veces
+            /i exch def % iterator
+            dots i get 0 get dots i get 1 get lineto % trazar
+        } for
+    } if
+    end
+} def
+
+/polygonRenderer{
+    2 dict begin
+    /sides exch def
+    /circumference exch def
+    /ratius circumference pi div 2 div def
+
+    sides 5 ge sides 2 mod 0 ne and { % si al menos es pentágono y es de lados impares
+        /segments sides array def % array de segmentos
+        segments 0 [0 ratius] put % punto inicial
+        /angle 360 sides div 2 mul 90 add def % como en 3.1, ampliando por la amplitud del salto
+        1 1 sides 1 sub { % lados - 1 veces
+            /i exch def
+            segments i [angle cos ratius mul angle sin ratius mul] put % como en 3.1
+            /angle angle 360 sides div 2 mul add def % fix angle
+        } for
+        % connectDots
+        newpath
+        segments connectDots
+        closepath
+    }if
+    end 
+} def
+
+escala_cm dup scale
+1 escala_cm div setlinewidth
+dx dy translate
+
+% UE. Se usará el código de 3.3
+% definir medidas (proporción 3:2)
+/width 10 def
+/height width 3 div 2 mul def
+
+% azul según wikipedia
+0 fix mul 33 fix mul 99 fix mul setrgbcolor
+newpath
+width 2 div neg height 2 div neg moveto
+width  0 rlineto
+0 height rlineto
+width neg 0 rlineto
+closepath
+fill
+
+% oro según wikipedia
+255 fix mul 204 fix mul 0 fix mul setrgbcolor
+/numberOfStars 12 def
+/star [ height 9 div pi mul 5] def % 1/9 del alto de la bandera de diámetro, según wikipedia
+/starsRatius height 3 div def % 1/3 del alto de la bandera de diámetro, según wikipedia
+/angle 0 def
+
+numberOfStars {
+    angle cos starsRatius mul angle sin starsRatius mul translate % moverme a startRatius * angle
+    star aload pop polygonRenderer
+    fill
+    angle cos starsRatius mul neg angle sin starsRatius mul neg translate
+    /angle angle 360 12 div add def % incrementar ángulo
+} repeat
+
+showpage
+
+% Alaska. No he encontrado definición matemática de la posición de las estrellas.
+escala_cm dup scale
+1 escala_cm div setlinewidth
+dx dy translate
+
+% definir medidas (proporción 125:177)
+/width 15 def % este ajsute respecto de mi por defecto 10 cm ha dejado la distribución de estrellas muy conseguida
+/height width 177 div 125 mul def
+
+% azul según wikipedia. Notese que no son los mismos que en la de la UE
+15 fix mul 3 fix mul 75 fix mul setrgbcolor
+newpath
+width 2 div neg height 2 div neg moveto
+width  0 rlineto
+0 height rlineto
+width neg 0 rlineto
+closepath
+fill
+
+% oro según wikipedia
+255 fix mul 182 fix mul 18 fix mul setrgbcolor
+
+/alaskaStar [ height 18 div pi mul 5] def % Alrededor de la mitad que las de la UE
+
+-5 2 translate % esta y las sucesivas posiciones van a ser introducidas completamente a ojo, ya que no siguen ningún patrón. Tras comprobar los resultados, mi ojo (el relativo, si no el absoluto) es bastante bueno
+alaskaStar aload pop polygonRenderer
+fill
+
+1 -0.5 translate
+alaskaStar aload pop polygonRenderer
+fill
+
+1 -1 translate
+alaskaStar aload pop polygonRenderer
+fill
+
+1 -1 translate
+alaskaStar aload pop polygonRenderer
+fill
+
+-0.2 -1 translate
+alaskaStar aload pop polygonRenderer
+fill
+
+3 -0.2 translate
+alaskaStar aload pop polygonRenderer
+fill
+
+1 1 translate
+alaskaStar aload pop polygonRenderer
+fill
+
+2 4 translate
+star aload pop polygonRenderer
+fill
+
+showpage

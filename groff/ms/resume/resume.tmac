@@ -1,0 +1,77 @@
+\# A template for Resumes
+\# Will Cashman 2022
+.
+\# Define colours
+.defcolor red rgb #cc3300
+.defcolor black rgb #000000
+.defcolor grey rgb #595959
+.
+\# Document title
+.de title
+\fB\s(30\\$*
+.LP
+..
+.
+\# Document subtitle
+.de subtitle
+\s(16\\$*
+.LP
+..
+.
+\# Section
+.de section
+.LP
+.sp 1
+\s(14\\$*
+.LP
+.sp -1
+\l'50'
+..
+.
+\# Item
+\# 1. Name
+\# 2. Location
+\# 3. Time
+\#
+\# Formatted as
+\# |{Company}, {Location}      {Time}|
+.de item
+.LP
+.nf
+.mk
+\# This space ensures the left-aligned is at the same level as the following
+\# right-aligned text.
+.sp 0.5
+\fB\s(12\\$1\fR \m[grey]\fI\s(12\\$2\m[]
+.rt
+.DS R
+\fB\s(11\\$3
+.DE
+.sp -0.5
+..
+.
+.de list
+.IP "  \(bu" 3
+\s(11\\$*
+.br
+..
+.
+.de email
+\m[grey]
+\fBE-mail:
+.pdfhref W -D mail:\*[EMAIL] \*[EMAIL]
+\m[black]
+\h'0.1i'
+..
+.
+.de github
+GitHub:
+.pdfhref W -D https://github.com/\*[GITHUB] \*[GITHUB]
+\h'0.1i'
+..
+.
+.de linkedin
+LinkedIn:
+.pdfhref W -D https://www.linkedin.com/in/\*[LINKEDIN]/ Will Cashman
+\h'0.1i'
+..

@@ -1,0 +1,118 @@
+/#copies 1 def  % Enter number of copies to print out
+/inch {72 mul} bind def % Define an inch as 72 points
+/checklist_title (101 things to do before death) def
+/checklist_strings[
+((Edit the text of the .ps PostScript source file to change this checklist.))
+(Get rich)
+(Get cool)
+(Get tall)
+(Get mad)
+(Get sad)
+(Repeat)
+] def
+
+/paper_width {8.5 inch} def % Enter paper width in points (portrait)
+/paper_height {11 inch} def % Enter paper height in points (portrait)
+/paper_margin {0.25 inch} def % Enter paper margin in points
+
+
+% *** Enter your fonts here ***
+/title_font {/Helvetica-Bold} def
+/standard_font {/Helvetica} def
+
+% --- Calculations ---
+
+% Calculate font sizes
+% Define title font size (in points)
+/title_font_size {paper_height 33 div} def
+% Define checklist string font size (in points)
+/checklist_font_size {title_font_size 2 div} def
+
+% Center point for writing page title
+/name_center {paper_width 2 div paper_height paper_margin sub title_font_size
+ sub} def
+
+% Starting point for writing checklist
+/checklist_start {paper_margin paper_height paper_margin sub title_font_size
+ sub paper_margin sub} def
+
+
+% --- Procedures ---
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CenterText&Show
+%
+% This procedure is called with the string to be centered on the top of
+% stack followed by the x and y position it is to be centered on.
+%
+% Example: x_position y_position (String) CenterText&Show
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/CenterText&Show
+{
+    dup                 % Make a copy of the string to be centered
+    stringwidth         % Get the width of the string
+    pop                 % Discard y component of string width
+    2 div               % Find x/2 ( 1/2 string width )
+    4 -1 roll exch sub  % Decrement the x position by 1/2 the string width
+    3 -1 roll moveto    % Move to correct spot
+    show                % Show string
+} def
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% DrawBox
+%
+% This procedure is called with the size of the box on the top of stack.
+%
+% Example: box_size DrawBox
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/DrawBox
+{
+    dup
+    0 exch rlineto
+    dup 0 rlineto
+    0 exch -1 mul rlineto
+    closepath
+    1 setlinewidth
+} def
+
+
+% --- Start program ---
+
+newpath % Start with a clean slate
+
+title_font findfont title_font_size scalefont setfont % Get a nice big font
+
+% Move to the point we want the name centered on and show it
+name_center checklist_title CenterText&Show
+
+% Move to where we want to start the checklist
+checklist_start moveto % Move to upper left corner
+
+% Get a smaller font
+standard_font findfont checklist_font_size scalefont setfont
+
+% This forall loop prints out the checklist string array prefixed with a box
+% from top to bottom.
+checklist_strings
+{
+    % Move down enough to print next line
+    0 checklist_font_size 4 add -1 mul rmoveto
+    currentpoint    % Save our starting point for the next line
+    currentpoint    % Save our starting point this line
+    % Move down slightly to better center the checkbox
+    0 checklist_font_size -6 div rmoveto
+    % Draw a checkbox the same size as font
+    checklist_font_size DrawBox
+    moveto          % Move back to the start point
+    % Move past the checkbox
+    checklist_font_size 4 add 0 rmoveto
+    % Put string to print on top of stack
+    3 -1 roll
+    show            % show string
+    moveto          % Move back to the start point
+}forall
+
+stroke
+showpage

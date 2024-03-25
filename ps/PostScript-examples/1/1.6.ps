@@ -1,0 +1,14 @@
+%!PS
+
+% definir valores con propósito demostrativo
+/A 1 def
+/B -2 def
+/C 0 def
+
+% pendiente = -A / B
+/m A B div neg def
+m =
+
+% Calcular el ángulo de corte con el eje X. La pendiente es la tangente del ángulo por lo que el ángulo es el arcotangente de la pendiente.
+/angle m 1 atan def % recuérdese que atan de PS es atan2
+angle =

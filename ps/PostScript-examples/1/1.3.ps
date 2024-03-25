@@ -1,0 +1,18 @@
+%!PS
+
+% definir pi radianes como 180, ya que PS trabaja en grados
+/pirad 180 def
+
+% seno coseno y tangente de pi / 4
+pirad 4 div sin
+pirad 4 div cos
+stack
+div
+=
+
+% seno coseno y tangente de 3 pi /2
+pirad 3 2 div mul sin
+pirad 3 2 div mul cos
+stack
+div % undefinedresult error
+=

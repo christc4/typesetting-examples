@@ -1,0 +1,21 @@
+%!PS
+
+% En PostScript, la unidad de medida básica es el punto (pt), donde 1 pulgada (in) equivale a 72 puntos. 1 cm = 1 / 2.54 in. 1 cm = (1 / 2.54) * 72 puntos = 28.346
+% Definir escala
+/escala_cm 1 2.54 div 72 mul def 
+% Establecer la escala en el documento
+escala_cm escala_cm scale % o escala_cm dup scale
+
+% Ancho de un folio A4 en puntos = 8.27 pulgadas * 72 puntos = 595.44
+% Alto de un folio A4 en puntos = 11.67 pulgadas * 72 puntos = 840.24
+/A4width 8.27 72 mul def
+/A4height 11.67 72 mul def
+A4width =
+A4height =
+
+% Ancho de un folio A3 en puntos = 11.7 pulgadas * 72 puntos = 842.4
+% Alto de un folio A3 en puntos = 16.5 pulgadas * 72 puntos = 1188
+/A3width 11.7 72 mul def
+/A3height 16.5 72 mul def
+A3width =
+A3height =

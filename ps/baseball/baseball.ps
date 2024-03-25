@@ -1,0 +1,214 @@
+%!PS-Adobe-3.0
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% baseball.ps : A baseball scorecard in PostScript.
+%
+% Created by: Daniel C. Nygren
+% Email: dan.nygren@gmail.com
+%
+% Copyright (c) 1994, 2020, Daniel C. Nygren.
+%
+% BSD 0-clause license, "Zero Clause BSD", SPDX: 0BSD
+%
+% Permission to use, copy, modify, and/or distribute this software for any
+% purpose with or without fee is hereby granted.
+%
+% THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+% REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+% AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+% INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+% LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE
+% OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+% PERFORMANCE OF THIS SOFTWARE.
+%
+%   I wrote this program because I was interested in learning Postscript, and I
+% got tired of paying outrageous prices for scorecards at the baseball stadium.
+% Most ballparks no longer sell scorecards separately and make you buy a whole
+% program just to get the scorecard inside it. Print this on cardstock or
+% have a clipboard or piece of cardboard handy. Just don't forget to bring a
+% pencil!
+%
+% CALL SEQUENCE baseball.ps
+%
+% EXAMPLES      lp baseball.ps
+%               gs baseball.ps
+%
+% TARGET SYSTEM Level 1 PostScript interpreters
+%
+% DEVELOPED ON  MS-DOS, LaserJet PostScript cartridge
+%
+% CALLS         N/A
+%
+% CALLED BY     N/A
+%
+% INPUTS        Home and visitors team names
+%
+% OUTPUTS       Dirties up a formerly clean sheet of paper if sent to a printer.
+%
+% RETURNS       Nothing
+%
+% ERRORS        No error handling
+%
+% WARNINGS      (1. Describe anything a maintainer should be aware of)
+%               (2. Describe anything a maintainer should be aware of)
+%               (N. Describe anything a maintainer should be aware of)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Defines ---
+
+% *** Enter team names here ***
+/home_team_name (Home) def
+/visitors_team_name (Visitors) def
+
+/#copies 1 def    %Enter number of copies to print out
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+% ^^^^^^^^^^ Place code that may need modification above this point. ^^^^^^^^^^
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/inch {72 mul} def
+
+%Horizontal lines
+/hline {7.75 inch 0 inch rlineto} def
+/small_hline {5.375 inch 0 inch rlineto} def
+
+%Vertical lines
+/vline {0 inch 4.25 inch rlineto} def
+
+%Diagonal lines
+/dline {0.375 inch 0.25 inch rlineto} def
+
+%Starting point for home team area
+/home_start {0.5 inch 1 inch moveto} def
+
+%Starting point for visiting team area
+/visitors_start {0.5 inch 6.25 inch moveto} def
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CenterText&Show
+%
+% This procedure is called with the string to be
+% centered on the top of stack followed by the
+% x and y position it is to be centered on
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/CenterText&Show
+{
+    dup                     %Make a copy of the string to be centered
+    stringwidth             %Get the width of the string
+    pop                     %Discard y component of string width
+    2 div                   %Find x/2 ( 1/2 x string width )
+    4 -1 roll exch sub      %Decrement the x position by 1/2 x string width
+    3 -1 roll moveto        %Move to correct spot
+    show                    %Show string
+} def
+
+
+% --- Start program ---
+newpath    %Start with a clean slate
+
+% --- Draw the horizontal lines ---
+home_start
+
+%Repeat loop twice, once for home team area, once for visiting team area
+2{
+    2.375 inch 0 inch rmoveto       %0.375-0.125 =  0.25 (Move up 1/4 inch)
+    small_hline                     %Bottom Border
+    -7.75 inch 0.25 inch rmoveto    %Move up 1/4 inch
+
+     11{
+             hline
+             -7.75 inch 0.375 inch rmoveto   %11 lines 3/8" apart
+     } repeat
+
+    2.375 inch -0.125 inch rmoveto  %0.375-0.125 =  0.25 (Move up 1/4 inch)
+     small_hline                    %Top border
+     visitors_start                 %Move to Visitors start point
+}repeat
+
+% --- Draw the vertical lines ---
+
+home_start
+
+%Repeat loop twice, once for home team area, once for visiting team area
+2{
+     2.375 inch 0 inch rmoveto      %Move to vertical line area
+     12{
+              vline
+              0.375 inch -4.25 inch rmoveto %12 lines 3/8" apart
+     }repeat
+
+     -0.125 inch 0 inch rmoveto             %Adjust current point back for
+                                            %smaller lines
+     5{
+             vline
+             0.25 inch -4.25 inch rmoveto   %5 lines 1/4" apart
+      }repeat
+      visitors_start                %Move to Visitors start point
+}repeat
+
+% --- Draw the diagonal lines for runs and hits per inning ---
+
+home_start
+
+%Repeat loop twice, once for home team area, once for visiting team area
+2{
+      2.375 inch 0 inch rmoveto     %Move to vertical line area
+      11{
+              dline
+              0 inch -0.25 inch rmoveto
+      }repeat
+      visitors_start
+}repeat
+
+% --- Write team names, innings, and statistics ---
+/Helvetica-Bold findfont 20 scalefont setfont %Get a nice big font
+
+home_start                  %Home team start point
+0 inch 4.06667 inch rmoveto %Move up to Home Team Name
+home_team_name show         %Home team's name defined
+                            %at program start
+
+visitors_start              %Visiting team start point
+0 inch 4.06667 inch rmoveto %Move up to Visiting Team Name
+visitors_team_name show     %Visitor's name defined
+                            %at program start
+
+home_start
+%Repeat loop twice, once for home team area, once for visiting team area
+2{
+        2.575 inch 4.06667 inch rmoveto %Move up to Innings and statistics
+        /Helvetica-Bold findfont 10 scalefont setfont
+      [
+              (1) (2) (3) (4) (5) (6) (7) (8) (9) (10) (11) %An array of strings
+      ]
+      {
+              currentpoint      %Save the current point
+              2 copy            %Copy the current point for center_show command
+              5 4 roll          %Get string on top of stack,
+                                %followed by current points
+              CenterText&Show   %Center the string at current point and show it
+              moveto            %Move back to the previous current point
+              0.375 inch 0 inch rmoveto %Move 3/8" over to next inning
+      }forall
+
+      -0.075 inch 0 inch rmoveto %Adjust back since stats are only 1/4" apart
+
+        %Make the font not bold and a little smaller
+        /Helvetica findfont 8 scalefont setfont
+      [
+              (R) (H) (E) (RBI) (AB)  %An array of strings
+      ]
+      {
+                currentpoint    %Save the current point
+                2 copy          %Copy the current point for center_show command
+                5 4 roll        %Get string on top of stack,
+                                %followed by current points
+                CenterText&Show %Center the string at current point and show it
+                moveto          %Move back to the previous current point
+                0.25 inch 0 inch rmoveto    %Move 1/4" over to next stat
+      }forall
+
+visitors_start
+
+}repeat
+stroke
+showpage

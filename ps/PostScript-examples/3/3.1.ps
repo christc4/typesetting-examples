@@ -1,0 +1,62 @@
+%!PS
+
+/ppi 72 def % adobe points per inch
+% centro de la hoja
+/paper_width 21 def
+/paper_height 29.7 def
+/dx paper_width 2 div def 
+/dy paper_height 2 div def
+%se entiende que el parámetro estará en centímetros
+/escala_cm 1 2.54 div ppi mul def
+/pi 3.14159 def
+
+% cricunf, sides on stack -> path
+/polygonRenderer {
+    2 dict begin
+    /sides exch def
+    /circumference exch def
+    /ratius circumference pi div 2 div def
+    /angle 360 sides div 90 add def % ángulo entre lados
+    newpath
+    0 ratius moveto
+    % repeat sides times
+    sides {
+    angle cos ratius mul angle sin ratius mul lineto % libro 5.1
+    /angle angle 360 sides div add def % fix angle
+    } repeat
+    closepath
+    end
+} def
+
+% constantes
+/p1 [20 3] def % triángulo
+/black [0 0 0] def
+/p2 [55 4] def % cuadrado
+/red [1 0 0] def 
+/p3 [34 5] def % pentágono
+/green [0 1 0] def
+/p4 [12 7] def % heptágono
+/blue [0 0 1] def
+/p5 [20 11] def % undecágono
+/yellow [1 1 0] def
+
+% escala y moverse al centro
+escala_cm dup scale
+1 escala_cm div setlinewidth
+dx dy translate
+
+p1 aload pop polygonRenderer
+black aload pop setrgbcolor
+stroke
+p2 aload pop polygonRenderer
+red aload pop setrgbcolor
+stroke
+p3 aload pop polygonRenderer
+green aload pop setrgbcolor
+stroke
+p4 aload pop polygonRenderer
+blue aload pop setrgbcolor
+p5 aload pop polygonRenderer
+yellow aload pop setrgbcolor
+stroke
+showpage

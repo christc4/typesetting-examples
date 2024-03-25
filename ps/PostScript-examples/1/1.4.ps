@@ -1,0 +1,7 @@
+%!PS
+
+% La fórmula que relaciona arcosen y arcotangente es: arctan(x / sqrt (1 - x^2)) = arcsin x
+% Se pide calcular el ángulo cuyo seno es 0.4
+/senoA 0.4 def
+senoA 1 senoA dup mul sub sqrt atan % atan recibe dos argumentos: numerador y denominador por lo que no es "atan (num / div)" sino simplemente "atan"
+=

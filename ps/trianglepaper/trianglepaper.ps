@@ -1,0 +1,185 @@
+%!PS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% trianglepaper.ps - Triangles on paper in PostScript
+%
+% by Daniel C. Nygren
+% E-mail: dan.Nygren@gmail.com
+% Permanent E-mail: dan.Nygren@alumni.clemson.edu
+%
+% Copyright 2011 by Daniel C. Nygren
+%
+%   This program prints out triangle paper on a PostScript printer. I used it as
+% a template to create triangle trusses with toothpicks for a toothpick bridge
+% school project. The size of the triangles is adjustable via the side_size
+% variable. The darkness of the lines can be changed with the setgray command
+% and the line thickness can also be set differently with the setlinewidth
+% operator.
+%
+% CALLING SEQUENCE  N/A
+%
+% EXAMPLES          gs trianglepaper.ps (View on screen with Ghostscript)
+%                   lp trianglepaper.ps (Print if using PostScript Printer)
+%
+% TARGET SYSTEM     PostScript Level 2 Interpreters
+%
+% DEVELOPED USING   Ghostscript, Xerox WC 5030
+%
+% CALLS             N/A
+%
+% CALLED BY         N/A
+%
+% INPUTS            N/A
+%
+% OUTPUTS           The PostScript interpreter dirties up clean sheets of paper
+%                   or the screen with the output of the program.
+%
+% RETURNS           N/A
+%
+% ERROR HANDLING    N/A
+%
+% WARNINGS          1) This program requires PostScript Level 2.
+%                   (2. Describe anything a maintainer should be aware of)
+%                   (N. Describe anything a maintainer should be aware of)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --- Defines ---
+
+/#copies 1 def          % Enter number of copies to print out
+
+/side_size {2.36} def   % Enter length of a triangle side in inches
+% 2.36 inches * 2.54 cm/inch = 6 cm toothpick
+
+0.4 setgray         % Play with this to change darkness of lines (0 = Black)
+0.2 setlinewidth    % Play with this to change line thickness
+
+% Switched paper_width and paper_height variables for landscape mode
+/paper_width {11} def   % Enter paper width in inches
+%/paper_width {8.5} def % Enter paper width in inches
+/paper_height {8.5} def % Enter paper height in inches
+%/paper_height {11} def % Enter paper height in inches
+/paper_margin {0.25} def      % Enter paper margin in inches
+
+% If you would rather specify your paper sizes in millimeters, comment
+% out the above three lines and uncomment the below six lines.
+% Note ISO 216 A4 paper = 210mm x 297mm,
+% US Letter paper = 8.5in x 11in = 215.9mm x 279.4mm
+%/paper_width_in_mm {210} def  % Enter paper width in mm
+%/paper_width {paper_width_in_mm 25.4 div inch} def % millimeters/25.4 = inches
+%/paper_height_in_mm {297} def % Enter paper height in mm
+%/paper_height {paper_height_in_mm 25.4 div inch} def
+%/paper_margin_in_mm {6.35} def % Enter paper margin in mm
+%/paper_margin {paper_margin_in_mm 25.4 div inch} def
+
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+% ^^^^^^^^^^ Place code that may need modification above this point. ^^^^^^^^^^
+% ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+/tri_height {side_size 60 sin mul} bind def
+/tri_width {side_size} bind def
+
+% Calculate how many triangles will fit across the paper's width
+/this_many_tris_wide {paper_width paper_margin 2 mul sub tri_width div floor}
+bind def
+
+% Calculate how many triangles will fit across the paper's height
+/this_many_tris_high {paper_height paper_margin 2 mul sub tri_height div floor}
+bind def
+
+/inch {72 mul} bind def
+
+% --- Lines ---
+/line {side_size inch 0 inch rlineto} def
+/no_line {side_size inch 0 inch rmoveto} def
+
+/tri_bottom {
+    line
+} bind def
+
+/tri_side_a {
+    60 rotate
+    line
+    -60 rotate
+} bind def
+
+/tri_side_b {
+    -60 rotate
+    line
+    60 rotate
+} bind def
+
+% --- Start program ---
+
+newpath % Start with a clean slate
+
+% --- Calculate where to start printing so the triangles are centered ---
+
+% Find out how many triangles will fit across the paper's width.
+this_many_tris_wide
+
+% Then see how much room they will take up.
+tri_width mul
+
+% Then subtract from paper width and divide by two to find out where to start
+% printing. This x coordinate is left on the stack.
+paper_width exch sub 2 div inch
+
+% Find out how many triangles will fit across the paper's height
+this_many_tris_high
+
+% Then see how much room they will take up
+tri_height mul
+
+% Then subtract from paper height and divide by two to find out where
+% to start printing. This y coordinate is left on the stack.
+paper_height exch sub 2 div inch
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Switch to landscape mode
+% From landscap.ps by James E. Burns, 3/8/93, burns@nova.bellcore.com
+% Remember to also switch paper_width and paper_height variables
+gsave clippath pathbbox grestore
+4 dict begin
+/ury exch def /urx exch def /lly exch def /llx exch def
+%90 rotate  llx neg               ury neg              translate  % llx,ury
+90 rotate  llx neg               llx urx sub lly sub  translate  % llx,lly
+%90 rotate  ury lly sub urx sub   ury neg              translate  % urx,ury
+%90 rotate  ury lly sub urx sub   llx urx sub lly sub  translate  % urx,lly
+%-90 rotate urx neg               lly neg              translate  % urx,lly
+%-90 rotate urx neg               urx llx sub ury sub  translate  % urx,ury
+%-90 rotate llx lly add ury sub   urx llx sub ury sub  translate  % llx,ury
+%-90 rotate llx lly add ury sub   lly neg              translate  % llx,lly
+end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Start printing at the calculated spot
+moveto
+
+% Construct the rows of triangles by printing a row of tri bottoms
+% followed by a row of triangle sides. Loop counts must be integers, so
+% cvi is used to convert the numbers to integers.
+
+this_many_tris_high cvi{
+    % Save currentpoint on stack twice:
+    currentpoint% once for getting back to print the triangle sides,
+    currentpoint% once for returning to move up one row.
+
+    % Make a row of tri_bottoms
+    this_many_tris_wide cvi{
+        tri_bottom
+    }repeat
+
+    moveto  % Go back to point saved on stack to print triangle sides.
+
+    % Make a row of tri sides
+    this_many_tris_wide cvi{
+        tri_side_a
+        tri_side_b
+    }repeat
+
+    stroke  % Paint the line on the current path for this row
+    moveto  % Go back to point saved on stack so we can move up to next row
+    0 inch tri_height inch rmoveto  % Move up to next row
+
+}repeat
+
+showpage

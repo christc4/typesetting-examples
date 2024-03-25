@@ -1,0 +1,86 @@
+%!PS
+
+% En este documento se incluyen los apartados a, b y c. El procedimiento que se me ocurrió para el pentágono es aplicable a polígonos no-pares mayores.
+
+/ppi 72 def % adobe points per inch
+% centro de la hoja
+/paper_width 21 def
+/paper_height 29.7 def
+/dx paper_width 2 div def 
+/dy paper_height 2 div def
+/escala_cm 1 2.54 div ppi mul def
+/pi 3.14159 def
+
+% unir los puntos, recibe un array de 0 o más puntos
+% [[x, y]..] -> path
+/connectDots {
+    1 dict begin
+    /dots exch def
+    dots length 1 gt { % al menos 2
+        dots 0 get 0 get dots 0 get 1 get moveto % punto inicial
+        1 1 dots length 1 sub { % puntos - 1 veces
+            /i exch def % iterator
+            dots i get 0 get dots i get 1 get lineto % trazar
+        } for
+    } if
+    end
+} def
+
+% renderizar, recibe los mismos parámetros que el ejercicio 1 de esta práctica
+% cricunf, sides on stack -> path
+/polygonRenderer{
+    2 dict begin
+    /sides exch def
+    /circumference exch def
+    /ratius circumference pi div 2 div def
+
+    sides 5 ge sides 2 mod 0 ne and { % si al menos es pentágono y es de lados impares
+        /segments sides array def % array de segmentos
+        segments 0 [0 ratius] put % punto inicial
+        /angle 360 sides div 2 mul 90 add def % como en 3.1, ampliando por la amplitud del salto
+        1 1 sides 1 sub { % lados - 1 veces
+            /i exch def
+            segments i [angle cos ratius mul angle sin ratius mul] put % como en 3.1
+            /angle angle 360 sides div 2 mul add def % fix angle
+        } for
+        % connectDots
+        newpath
+        segments connectDots
+        closepath
+    }if
+    end 
+} def
+
+% constantes. Mismas que en 3.1
+/p1 [20 3] def % triángulo
+/black [0 0 0] def
+/p2 [55 4] def % cuadrado
+/red [1 0 0] def 
+/p3 [34 5] def % pentágono
+/green [0 1 0] def
+/p4 [12 7] def % heptágono
+/blue [0 0 1] def
+/p5 [20 11] def % undecágono
+/yellow [1 1 0] def
+
+% escala y moverse al centro
+escala_cm dup scale
+1 escala_cm div setlinewidth
+dx dy translate
+
+p1 aload pop polygonRenderer
+black aload pop setrgbcolor
+stroke
+p2 aload pop polygonRenderer
+red aload pop setrgbcolor
+stroke
+p3 aload pop polygonRenderer
+green aload pop setrgbcolor
+stroke
+p4 aload pop polygonRenderer
+blue aload pop setrgbcolor
+stroke
+p5 aload pop polygonRenderer
+yellow aload pop setrgbcolor
+stroke
+showpage

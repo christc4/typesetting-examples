@@ -1,0 +1,119 @@
+%!PS
+
+% IRLANDA
+% definir escala
+/scale_cm 1 2.54 div 72 mul def
+scale_cm scale_cm scale
+
+%definir escala 100/255 para ajustar rgb
+/fix 1 256 div def
+
+% definir medidas (proporción 2:1)
+/width 10 def
+/height width 2 div def
+
+% verde según wikipedia
+22 fix mul 155 fix mul 98 fix mul setrgbcolor
+newpath
+0 0 moveto
+width 3 div 0 rlineto
+0 height rlineto
+width 3 div neg 0 rlineto
+closepath
+fill
+
+% blanco según wikipedia
+1 setgray
+newpath
+width 3 div 0 moveto
+width 3 div 0 rlineto
+0 height rlineto
+width 3 div neg 0 rlineto
+closepath
+fill
+
+% naranja según wikipedia
+255 fix mul 136 fix mul 62 fix mul setrgbcolor
+newpath
+2 width 3 div mul 0 moveto
+width 3 div 0 rlineto
+0 height rlineto
+width 3 div neg 0 rlineto
+closepath
+fill
+
+% finalizar página
+showpage
+
+
+% SAN VICENTE Y LAS GRANADINAS no hay datos rgb en wikipedia
+% definir escala
+/scale_cm 1 2.54 div 72 mul def
+scale_cm scale_cm scale
+
+% definir medidas (proporción 3:2)
+/width 10 def
+/height 2 width 3 div mul def
+
+% azul
+0 0.2 0.5 setrgbcolor
+newpath
+0 0 moveto
+width 4 div 0 rlineto
+0 height rlineto
+width 4 div neg 0 rlineto
+closepath
+fill
+
+% amarillo
+1 0.8 0 setrgbcolor
+newpath
+width 4 div 0 moveto
+width 2 div 0 rlineto
+0 height rlineto
+width 2 div neg 0 rlineto
+closepath
+fill
+
+% verde
+0 0.5 0 setrgbcolor
+newpath
+3 width 4 div mul 0 moveto
+width 4 div 0 rlineto
+0 height rlineto
+width 4 div neg 0 rlineto
+closepath
+fill
+
+% rombo
+newpath
+3 width 8 div mul height 2 div moveto
+width 2 div height 6 div lineto
+5 width 8 div mul height 2 div lineto
+width 2 div 5 height 6 div mul lineto
+closepath
+fill
+
+% triángulo substractor (superior)
+1 0.8 0 setrgbcolor
+0.2 setlinewidth
+newpath
+width 2 div height 2 div moveto % al centro
+3 width 4 div mul 1 sub height 0.6 sub lineto
+width 4 div 1 add height 0.6 sub lineto
+closepath
+gsave
+stroke
+grestore
+fill
+
+%triángulo no substractor
+newpath
+width 2 div height 2 div moveto % al centro
+3 width 4 div mul 1 sub 0 0.6 add lineto
+width 4 div 1 add 0 0.6 add lineto
+closepath
+stroke
+
+% finalizar página
+showpage

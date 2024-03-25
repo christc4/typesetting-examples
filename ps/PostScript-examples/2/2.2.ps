@@ -1,0 +1,126 @@
+%!PS
+/inchesWide 8.5 def % letter
+/inchesHigh 11 def
+/ppi 72 def % adobe points per inch
+/pointsWide inchesWide ppi mul def
+/pointsHigh inchesHigh ppi mul def
+/escala_cm 1 2.54 div 72 mul def % no demandado por este apartado
+<<
+  /PageSize [pointsWide pointsHigh]
+>> setpagedevice
+
+% devuelve los puntos en los que la recta corta al segmento. Como aclara el libro, el segmento es semicerrado (]
+% [Px Py] [Qx Qy] A B C -> [] | [Ix Iy]
+/segment_intersections {
+    5 dict begin % crear diccionario local
+    /C exch def
+    /B exch def
+    /A exch def
+    /Q exch def
+    /P exch def
+    % Ecuaciones generales APx + BPy + C
+    /functionOfP A P 0 get mul B P 1 get mul add C add def
+    /functionOfQ A Q 0 get mul B Q 1 get mul add C add def
+
+    functionOfP functionOfQ mul 0 lt { % f(P) * f(Q) < 0 -> los dos primeros casos del libro (uno mayor y otro menor) -> hay un punto de intersección
+        /lambda functionOfP functionOfP functionOfQ sub div def
+        [
+            1 lambda sub
+            P 0 get mul
+            lambda Q 0 get mul add
+            1 lambda sub P 1 get mul
+            lambda Q 1 get mul add
+        ]
+    }{ %si no
+        functionOfQ 0 eq { % f(Q) == 0 -> los tres siguientes casos del libro-> la recta atraviesa la esquina final del segmento (ya sea conteniendo al segmento o cortándola secantemente)
+            Q
+        } if %último caso -> no hay punto de intersección por lo que no hay código asociado
+    } ifelse 
+    end
+} def
+
+% Main
+/square_intersections { % puede devolver ninguno, uno o dos puntos. Según la definición de segmento implementada en la función anterior, si la recta contiene a un segmento devolverá las dos esquinas del segmento.
+% [x0, y0] [x1, y1] esquinas del rectángulo [A B C] 
+    3 dict begin
+    /r exch def
+    /A r 0 get def
+    /B r 1 get def
+    /C r 2 get def
+    /right_top exch def
+    /left_bottom exch def
+    /left_top [left_bottom 0 get right_top 1 get] def
+    /right_bottom  [right_top 0 get left_bottom 1 get] def
+    
+    % go, go, go, go
+    [
+        left_bottom right_bottom A B C segment_intersections
+        right_bottom right_top A B C segment_intersections
+        right_top left_top A B C segment_intersections
+        left_top left_bottom A B C segment_intersections
+    ]
+    end
+} def
+
+/mkline { % para poder reutilizar código, recibirá el mismo argumento que 2.1. A través de un translate y de la redefinición de pointsWide y pointsHigh, puedo cambiar el comportamiento de la función artificialmente sin reescribir código, usando estas globales.
+% [A B C] -> path
+    1 dict begin
+    /r exch def
+    /intersections_array [0 0] [pointsWide pointsHigh] r square_intersections def
+    newpath
+    intersections_array length 2 ge{ % if al menos dos intersecciones. Es interesante destacar el caso crítico de las rectas tangentes al marco (por un vértice, no por una arista). En este caso intersections_array contendría un solo elemento, lo que no es suficiente para crear un path.
+    intersections_array 0 get 0 get intersections_array 0 get 1 get moveto
+    intersections_array 1 get 0 get intersections_array 1 get 1 get lineto
+    }if
+    end
+}def
+
+% constantes. Mismas que en 2.1
+/r1 [1 -2 -250] def % 1
+/black [0 0 0] def
+/r2 [1 1 -10] def % a
+/r2Color [1 0 0] def % rojo
+/r3 [-5 2 -10] def % b despejar C
+/r3Color [0 1 0] def % verde
+/r4 [1 -1 0] def % c despejar B
+/r4Color [0 0 1] def % azul
+/r5 [0.5 1 1] def % d despejar A y C
+/r5Color [1 0.5 0] def % naranja
+/r6 [1 0 1] def % e despejar C
+/r6Color [1 1 0] def % amarillo
+/xAxis [0 1 0] def
+/yAxis [1 0 0] def
+
+% ejecución. Se pueden cambiar las instrucciones de orden para testar más comportamientos
+r1 mkline
+black aload pop setrgbcolor
+stroke
+
+escala_cm dup scale
+1 escala_cm div setlinewidth
+5 10 translate
+/pointsWide 10 def % valores para redefinir la esquina superior del marco, introducidos sin ningún criterio más que que sean mayores que el nuevo origen de coordenadas
+/pointsHigh 15 def
+
+r2 mkline
+r2Color aload pop setrgbcolor
+stroke
+r3 mkline
+r3Color aload pop setrgbcolor
+stroke
+r4 mkline
+r4Color aload pop setrgbcolor
+stroke
+r5 mkline
+r5Color aload pop setrgbcolor
+stroke
+r6 mkline
+r6Color aload pop setrgbcolor
+stroke
+xAxis mkline
+black aload pop setrgbcolor
+stroke
+yAxis mkline
+black aload pop setrgbcolor
+stroke
+showpage

@@ -1,0 +1,233 @@
+%!PS-Adobe-2.0
+%%Pages: 2
+%%Page: 1 1
+%  the programming one foo.
+%----------------------------------------
+% convert from inches to points
+%
+  /inch {72 mul} def
+%
+%  isolate list of strings to be printed as STRINGS
+%
+  /STRINGS {ARGS 8 get} def
+%------------------------------------------------------------
+% "carriage return" to beginning of next line
+%
+  /crlf {currentpoint ARGS 1 get inch sub exch
+         pop  0  exch moveto} def
+
+/head 15.00 def
+
+/blt 13.00 def
+% takes start point, rotation
+/corner
+{
+   % outer stroke
+   0.2 0.2 0.2 setrgbcolor
+   0.25 setlinewidth
+   3 20 moveto
+   3  3 lineto
+   20 3 lineto
+   stroke
+   4 25 moveto
+   4  4 lineto
+   25 4 lineto
+   stroke
+   5 17 moveto
+   5  6 lineto
+   8  6 lineto
+   8  8 lineto
+   6  8 lineto
+   6  5  lineto
+   17 5  lineto
+   stroke
+} def
+
+/bracket
+{
+	0.5 inch 0.25 inch translate
+	corner
+	7.5 inch 0 inch translate
+	90 rotate
+	corner
+	10.60 inch 0 inch translate
+	90 rotate
+	corner
+	7.5 inch 0 inch translate
+	90 rotate
+	corner
+} def
+
+%
+%------------------------------------------------------------
+% finally, "prlines" itself -- invoked by placing the array
+%  of arguments on stack, then executing "prlines"
+%
+  /prlines
+   {/ARGS exch def
+     ARGS 0 get /textfont exch findfont def     % set up font
+     textfont ARGS 2 get scalefont setfont      % activate font
+%
+%     ARGS 3 get inch ARGS 4 get inch  moveto    % go to start point
+%
+     ARGS 3 get inch  ARGS 4 get inch  translate
+     ARGS 6 get  rotate
+      0 0  moveto
+     ARGS 7 get setgray
+      0 1 STRINGS length 1 sub
+       {STRINGS exch get show crlf} for         % print each string
+%
+     ARGS 6 get neg  rotate
+     ARGS 3 get inch neg  ARGS 4 get inch neg  translate
+         }  def
+
+ %%EndSetup
+ [ /TimesNewRoman
+ 0.2
+ 10.00
+  4.15   0.25
+ (ABSOLUTE)
+  0
+  0
+ [
+ (1 of 2)
+ ]] prlines
+
+[ /TimesNewRoman
+ 0.2 16.00 3.5  10.5 (ABSOLUTE) 0 0 [
+(Nick Gully)
+]] prlines
+ [ /TimesNewRoman 0.2 14.00  1.90 10.2 (ABSOLUTE)  0 0 [
+(nick@gully.org || gully.org/nick || 303.319.9760)
+ ]] prlines
+
+[ /TimesNewRoman 0.25 14  1.0   9.8 (ABSOLUTE)  0  0 [
+(  Looking to contribute experience in software, hardware integration, laboratory )
+(testing, and good humor to development and shipping exciting products. Adept at issues)
+(that are difficult, involve coordination, legacy code, customer outreach, or education)
+(to make a successful product.)
+]] prlines
+
+[ /TimesNewRoman-Bold 0.22 head  0.75  8.5 (ABSOLUTE)  0  0 [
+(Senior Software Engineer, Ad Platform : SpotX / Magnite March 2020 - Present)
+]] prlines
+
+[ /TimesNewRoman 0.27 blt 0.8 8.2 (ABSOLUTE) 0 0 [
+(\267 Delivering high performance software across multiple components in data centers. \(C++20, php\))
+(\267 Mentoring new hires and improving documentation to streamline onboarding. \(Confluence\))
+(\267 Upholding high software quality through well written stories, automated tests and code reviews.)
+(   \(Jira, Python, GitHub\))
+(\267 Applying new technologies to deliver next-generation performance goals. \(seastar.io\))
+(\267 Designing systems to span on-prem hosting as well as cloud-burstable instances. \(docker, k8s\))
+(\267 Providing training for distributed knowledge of key products and technologies.)
+(   \(slides, Google Meet, hand puppets\))
+(\267 Working in an intercontinental team from home and office. \(Slack, Hangouts\))
+]] prlines
+
+
+[ /TimesNewRoman-Bold 0.22 head  0.75  5.7 (ABSOLUTE)  0  0 [
+(Software Engineer 3, Extensibility & Core : SketchUp 2017 - March 2020)
+]] prlines
+
+[ /TimesNewRoman 0.27 blt 0.8 5.4 (ABSOLUTE) 0 0 [
+(\267 Producing cross-platform features in C++ for use on multiple platforms.)
+(   \(vim, Xcode, Visual Studio, git, perforce, Atlassian agile suite\))
+(\267 Volunteered to take on a major feature upgrade and refactor that was a year overdue;)
+(   turned it around to release in three months.)
+(\267 Developer outreach and conference presentations on new features. )
+(\267 Support for internal and external developers. \(C++, C, Ruby\) )
+(\267 Concept and working prototype of SketchUp using cloud-based parametric geometry)
+(   engines. \(nanomsg, WebSockets, TypeScript, Vue.js\))
+(\267 Three years as volunteer facilitator for productive annual hackathons.)
+]] prlines
+
+
+[ /TimesNewRoman-Bold 0.22 head  0.75  2.8 (ABSOLUTE) 0  0 [
+(Software Engineer 2, 3D Warehouse : SketchUp 2015 - 2017)
+]] prlines
+
+[ /TimesNewRoman 0.27 blt  0.8   2.5 (ABSOLUTE) 0 0 [
+(\267 Built components of browser-based SketchUp and cloud file access module \(TypeScript\).)
+(\267 Developing robust websites for SketchUp users across the globe on a two week agile)
+(   release cycle \(JavaScript, TypeScript\).)
+(\267 Using analytics feedback to improve user interfaces and performance \(Google Analytics\))
+(\267 Implementing search pages to provide responsive interfaces that are cacheable on CDN's)
+(   as well as palatable to search engines to improve page rankings. \(Cloudfront, Node.js\))
+(\267 Recovery and palliative care for legacy website involved in software purchases and downloads)
+(   for in-application extensions. \(php, ibuprofen\))
+]] prlines
+
+bracket
+showpage
+
+%%Page: 2 2
+[ /TimesNewRoman-Bold 0.22 head  0.75  10.4 (ABSOLUTE)  0  0 [
+(Manager and Software Engineer, Browser Toolbars : ShopAtHome 2013-2015)
+]] prlines
+
+[ /TimesNewRoman 0.27 blt 0.8   10.1 (ABSOLUTE) 0  0  [
+(\267 Managed a team of five programmers and enabled communication between groups.   )
+(\267 Refactored IE Toolbar C++ code and installer to remove need for UAC elevation; cut)
+(   installer size by a third. Resulted in millions in additional revenue from customer success.)
+(\267 Toolbar applications in C++ \(IE\) and Javascript \(Chrome, Firefox, Safari\). )
+(\267 Using Unit and Integration tests to validate business logic in browser extensions and)
+(   supporting backend web servers. \(Visual Studio, TFS\))
+(\267 Application services, unit tests, and SQL procedures for backend servers handling)
+(   millions of requests every day from active Toolbars. \(C#, MSSQL\))
+]] prlines
+
+
+[ /TimesNewRoman-Bold 0.20 15.00  0.75   7.8 (ABSOLUTE)  0  0 [
+(Lighting Engineer and Programmer : ITL Boulder 2004-2013)
+]] prlines
+[ /TimesNewRoman 0.27 blt  0.8   7.5 (ABSOLUTE)  0  0 [
+(\267 Design, development, and support of a Win32 multithreaded C++ applications for)
+(   operation of photometric instruments \(goniophotometers and spectroradiometers\),)
+(   including hardware integration of moving test apparatus with human safety lockouts.)
+(\267 Maintaining a world-class reputation and NIST NVLAP Certification for accurate)
+(   reporting, became one of two laboratories chosen for validation of DOE L-Prize )
+(   contestants. Testing for prototypes, manufacturing quality control, and research. )
+(\267 Training, management, safety, and scheduling for technicians and a programmer in a )
+(   laboratory growing at 30% a year for over four years.)
+(\267 Software development in C++ for an AutoCAD plugin tool for lighting calculations and)
+(   rendering of architectural and roadway environments.)
+]] prlines
+
+
+[ /TimesNewRoman-Bold 0.22 head  0.75   4.6 (ABSOLUTE)  0  0 [
+(Software Engineer : Lighting Analysts, Inc. 2000-2004)
+]] prlines
+
+[ /TimesNewRoman 0.27 blt  0.8   4.3 (ABSOLUTE)  0  0 [
+(\267 Development of software for accurate lighting calculations and visualizations of interior)
+(   and exterior lighting design. User interface, direct and indirect lighting calculations)
+(   for architectural environments and photometric data, network licensing code. \(C++, VB\))
+(\267 Design, maintenance, and security of a web server for installer downloads. Reduced)
+(   the installer size in half to facilitate moving from CD to internet distribution of software.)
+(   Secure customer login for access to downloads. (Linux, Apache, MySQL, Perl))
+]] prlines
+
+
+[ /TimesNewRoman-Bold 0.22 head  0.75   2.4 (ABSOLUTE)  0 0 [
+(Education: University of Colorado - Boulder 1999)
+]] prlines
+
+[ /TimesNewRoman 0.27 blt  0.8   2.1 (ABSOLUTE)  0  0 [
+(\267 Architectural Engineering with Illumination Engineering emphasis.)
+(\267 Minor in Computer Science, emphasis on numerical algorithms.)
+ ]] prlines
+
+[ /TimesNewRoman-Bold 0.22 head  0.75   1.5 (ABSOLUTE)  0  0 [
+(Etcetera)
+]] prlines
+
+[ /TimesNewRoman 0.27 blt  0.8  1.2 (ABSOLUTE)  0  0 [
+ (\267 Home repair, cycling, hiking, model railroading, running my own server for web/mail.)
+ (\267 CppCon Staff Organizer for exciting field trips, 2021 & 2022.)
+ ]] prlines
+[ /TimesNewRoman 0.2 10.00 4.15   0.25 (ABSOLUTE)  0  0 [
+ (2 of 2)
+ ]] prlines
+
+bracket
+showpage

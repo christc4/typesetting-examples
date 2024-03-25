@@ -1,0 +1,118 @@
+%!PS
+/inchesWide 8.5 def % letter
+/inchesHigh 11 def
+/ppi 72 def % adobe points per inch
+/pointsWide inchesWide ppi mul def
+/pointsHigh inchesHigh ppi mul def
+/escala_cm 1 2.54 div 72 mul def 
+<<
+  /PageSize [pointsWide pointsHigh]
+>> setpagedevice
+
+% Encontrar los límites dentro de la página
+% [A B C] on stack, so A B C segment-page is a procedure that takes two parameters and puts two points into the stack.
+/segment-page {
+    1 dict begin % crear diccionario local
+    aload pop
+    /C exch def
+    /B exch def
+    /A exch def
+
+    A abs B abs le { % fundamentalmente horizontal
+        /xleft 0 def
+        /xright 612 def
+        /yleft C A xleft mul add B div neg def % y = -(C + Ax) / B
+        /yright C A xright mul add B div neg def
+        [xleft yleft] % P a la pila
+        [xright yright] % Q a la pila
+    }{ % fundamentalmente vertical simplemente intercambiar y por x
+        /yleft 0 def
+        /yright pointsHigh def
+        /xleft C B yleft mul add A div neg def % y = -(C + Bx) / A
+        /xright C B yright mul add A div neg def
+        [xleft yleft] % P a la pila
+        [xright yright] % Q a la pila
+    } ifelse
+    end
+} def
+
+% Main
+% [A B C] on stack
+/mkline {
+    1 dict begin
+    aload pop
+    /C exch def
+    /B exch def
+    /A exch def
+    % T = page to user matrix
+    /T
+    matrix defaultmatrix
+    matrix currentmatrix
+    matrix invertmatrix
+    matrix concatmatrix
+    def
+    % get line in page coordinates (parser)
+    [
+    A T 0 get mul
+    B T 1 get mul add
+    A T 2 get mul
+    B T 3 get mul add
+    T 4 get A mul
+    T 5 get B mul add
+    C add
+    ]
+    % find P, Q
+    segment-page
+    % build the line
+    aload pop T transform moveto
+    aload pop T transform lineto
+    end
+} def
+
+% constantes
+/r1 [1 -2 -250] def % 1
+/black [0 0 0] def
+/r2 [1 1 -10] def % a
+/r2Color [1 0 0] def % rojo
+/r3 [-5 2 -10] def % b despejar C
+/r3Color [0 1 0] def % verde
+/r4 [1 -1 0] def % c despejar B
+/r4Color [0 0 1] def % azul
+/r5 [0.5 1 1] def % d despejar A y C
+/r5Color [1 0.5 0] def % naranja (echo de menos css)
+/r6 [1 0 1] def % e despejar C
+/r6Color [1 1 0] def % amarillo
+/xAxis [0 1 0] def
+/yAxis [1 0 0] def
+
+
+r1 mkline
+black aload pop setrgbcolor
+stroke
+
+escala_cm dup scale
+1 escala_cm div setlinewidth
+5 10 translate
+
+r2 mkline
+r2Color aload pop setrgbcolor
+stroke
+r3 mkline
+r3Color aload pop setrgbcolor
+stroke
+r4 mkline
+r4Color aload pop setrgbcolor
+stroke
+r5 mkline
+r5Color aload pop setrgbcolor
+stroke
+r6 mkline
+r6Color aload pop setrgbcolor
+stroke
+xAxis mkline
+black aload pop setrgbcolor
+stroke
+yAxis mkline
+black aload pop setrgbcolor
+stroke
+showpage

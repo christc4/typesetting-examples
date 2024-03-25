@@ -1,0 +1,89 @@
+<!-- This page was generated automatically with FAQtor.py -->
+
+<a name="#top"></a>
+<html>
+<head><title>PCB Stackup FAQ</title></head>
+<body bgcolor="white">
+<center><h1>pcb_stackup.eps Frequently Asked Questions</h1></center>
+<center><h3>Maintained by <A HREF="mailto:dan.nygren@gmail.com">dan.nygren@gmail.com</A></h3></center>
+<center><h3>Last updated: 02 Mar 2020 </h3></center>
+
+<table border="0">
+<tr><th colspan="2" align="left">&nbsp;<br>General</th></tr>
+<tr><td>Q.&nbsp;1.0&nbsp;</td><td valign="top"><a href="#1_0">How do I change the PCB Stackup in the picture? </a></td></tr>
+<tr><td>Q.&nbsp;1.1&nbsp;</td><td valign="top"><a href="#1_1">What if I don't know what the layer name/layer #/copper weight/thickness/grayscale of a layer is? </a></td></tr>
+<tr><td>Q.&nbsp;1.2&nbsp;</td><td valign="top"><a href="#1_2">How do I view the PCB Stackup? </a></td></tr>
+<tr><td>Q.&nbsp;1.3&nbsp;</td><td valign="top"><a href="#1_3">How do I change the title of the PCB Stackup? </a></td></tr>
+<tr><td>Q.&nbsp;1.4&nbsp;</td><td valign="top"><a href="#1_4">How do I use the PCB Stackup in another document? </a></td></tr>
+</table>
+<hr>
+<h1 id="General">General</h1>
+<a name="1_0"></a>
+<h2>A. 1.0 &nbsp;&nbsp; How do I change the PCB Stackup in the picture? </h2><br>Edit the pcb_stackup.eps file with any text editor (e.g. vi, gedit, gvim, emacs,
+etc.) At the top of the file is an array called <tt>layer_stackup</tt> which you
+edit to create your stackup.
+
+<pre>
+%   [(Layer Name)    (Layer#) (Cu Weight) (Thickness) (GrayScale) -> 1.0 White, 0.0 Black]
+/layer_stackup [
+    [(Top)              (1)     (0.5)        ()        (0.9)]
+    [(02_GND_01)        (2)     (1.0)        ()        (0.6)]
+    [(03_SIG_01)        (3)     (1.0)        ()        (0.8)]
+    [(04_SIG_02)        (4)     (1.0)        ()        (0.8)]
+    [(05_PWR_01)        (5)     (1.0)        ()        (0.4)]
+    [(Bottom)           (6)     (0.5)        ()        (0.9)]
+] def
+</pre>
+
+
+<a href="#top"><p align="right">Return to top&nbsp;&nbsp;</p></a>
+<hr>
+<a name="1_1"></a>
+<h2>A. 1.1 &nbsp;&nbsp; What if I don't know what the layer name/layer #/copper weight/thickness/grayscale of a layer is? </h2><br>If you want to omit a layer variable, just substitue a null string <tt>()</tt> for it in the array.
+
+<a href="#top"><p align="right">Return to top&nbsp;&nbsp;</p></a>
+<hr>
+<a name="1_2"></a>
+<h2>A. 1.2 &nbsp;&nbsp; How do I view the PCB Stackup? </h2><br>You can send the pcb_stackup.eps file to a PostScript printer ($ lp
+pcb_stackup.ps), or view it with GhostScript (<tt>$ /usr/bin/gs</tt> ) or Okular
+(<tt>$/usr/bin/okular</tt> ) or Evince ($ <tt>/usr/bin/evince</tt> ), or
+ Gnome Ghostview ( <tt>/usr/bin/ggv</tt> ).
+
+
+<a href="#top"><p align="right">Return to top&nbsp;&nbsp;</p></a>
+<hr>
+<a name="1_3"></a>
+<h2>A. 1.3 &nbsp;&nbsp; How do I change the title of the PCB Stackup? </h2><br>Edit the pcb_stackup.eps file with any text editor (e.g. vi, gedit, gvim,
+emacs, xemacs etc.) At the top of the file is a string called <tt>fab_name</tt> which
+you edit to change the title.  The fab_name printed at the top of the page is
+scaled to fit the page no matter how long this title string is, so don't worry
+if you want to use a long descriptive name.
+
+<pre>
+/fab_name (Project_Name Board_Name PCB Stackup 271-XXXX-YY rev ZZ) def
+</pre>
+
+
+<a href="#top"><p align="right">Return to top&nbsp;&nbsp;</p></a>
+<hr>
+<a name="1_4"></a>
+<h2>A. 1.4 &nbsp;&nbsp; How do I use the PCB Stackup in another document? </h2><br>You should be able to directly import the pcb_stackup.eps file into your
+document in its native EPS format.  If you really need to convert it to a
+different graphic format, here's how to do so with Imagemagick:
+
+<p>
+Convert to a GIF w/ transparent background using Imagemagick:
+<pre>
+$ /usr/bin/convert pcb_stackup.eps pcb_stackup.gif 
+</pre>
+
+<p>
+Convert to a PNG w/ white background using Imagemagick:
+<pre>
+$ /usr/bin/convert -flatten pcb_stackup.eps pcb_stackup.gif
+</pre>
+
+
+<a href="#top"><p align="right">Return to top&nbsp;&nbsp;</p></a>
+<hr>
+</body></html>

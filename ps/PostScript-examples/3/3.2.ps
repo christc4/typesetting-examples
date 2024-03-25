@@ -1,0 +1,70 @@
+%!PS
+
+/ppi 72 def
+/paper_width 21 def
+/paper_height 29.7 def
+/dx paper_width 2 div def 
+/dy paper_height 2 div def
+/escala_cm 1 2.54 div ppi mul def
+/pi 3.14159 def
+/degreeScale 180 pi div def % factor conversión radianes -> grados
+
+% marco
+escala_cm dup scale
+1 escala_cm div setlinewidth
+dx dy translate
+
+% constantes
+/N 1000 def % puntos
+/dx paper_width N div def % diferencial en x de punto. N * dx debe ser = amplitud del renderizado en x
+
+/functionA { 
+    1 dict begin % cargar x
+    /x exch def 
+    %x^3 - 4x
+    x x x mul mul 4 x mul sub
+    end
+} def
+
+/functionB {
+    1 dict begin
+    /x exch def
+    %cos(x)
+    x x degreeScale mul cos
+    end
+} def
+
+% ejes cartesianos % todo el ancho y todo el largo.
+newpath
+paper_width neg 2 div 0 moveto
+paper_width 2 div 0 lineto
+closepath
+stroke
+
+newpath
+0 paper_height neg 2 div moveto
+0 paper_height 2 div lineto
+closepath
+stroke
+
+
+% a
+/x paper_width neg 2 div def
+newpath
+x dup functionA moveto
+N { % renderizar f dx a lo largo de todos los diferenciales
+    /x x dx add def
+    x x functionA lineto
+} repeat
+stroke
+
+% b
+/x paper_width neg 2 div def
+newpath
+x dup functionB moveto
+N { 
+    /x x dx add def
+    x x functionB lineto
+} repeat
+stroke
+showpage
