@@ -1,5 +1,8 @@
 # Typesetting examples
 
+## Why?
+Perhaps, the biggest fall from grace in computing is the death of document formatting with minimalist programs in favour of word processors. So as to not preach to the choir, for anyone who has accidentally stumbled upon this repository you should stop what you're doing immediately and learn some of these extensible tools.
+
 ## Personal examples
 
 Anything noteworthy are probably my larger projects, written in LaTeX, those being, [The Gospel of St. John the Divine](https://github.com/christc4/john.git) and my [Wordlist](https://github.com/christc4/words.git)
