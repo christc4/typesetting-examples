@@ -13,3 +13,4 @@ Thank you to these wonderful people for everything else .
 - [Arnav Bandekar](https://github.com/jackypacky?tab=repositories)
 - [Luke Smith](https://lukesmith.xyz)
 - [Daniel C. Nygren](https://github.com/dnygren), .ps examples
+- [Plainoldcheese](https://plainoldcheese.neocities.org/), groff-guide
