@@ -9,3 +9,4 @@ Thank you to these wonderful people for everything else .
 - The late [Don Lancaster](https://www.tinaja.com/)
 - [Arnav Bandekar](https://github.com/jackypacky?tab=repositories)
 - [Luke Smith](https://lukesmith.xyz)
+- [Daniel C. Nygren](https://github.com/dnygren), .ps examples
