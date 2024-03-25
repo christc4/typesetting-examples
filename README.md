@@ -11,6 +11,7 @@ Anything noteworthy are probably my larger projects, written in LaTeX, those bei
 Thank you to these wonderful people for everything else .
 - The late [Don Lancaster](https://www.tinaja.com/)
 - [Arnav Bandekar](https://github.com/jackypacky?tab=repositories)
+- [Diomidis Spinellis](https://www.spinellis.gr/index.html.var), unix troff
 - [Luke Smith](https://lukesmith.xyz)
 - [Daniel C. Nygren](https://github.com/dnygren), .ps examples
 - [Plainoldcheese](https://plainoldcheese.neocities.org/), groff-guide
