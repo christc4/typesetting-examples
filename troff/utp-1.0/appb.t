@@ -1073,9 +1073,9 @@ l%l%l%l%l%l%l%l.
 2C%\ \ \ C2%\ \ \ EZ%\ \ \ IH%\ \ \ MN%\ \ \ R3%\ \ \ TC%\ \ \ XF
 AB%\ \ \ CA%\ \ \ FA%\ \ \ IM%\ \ \ MO%\ \ \ RA%\ \ \ TD%\ \ \ XK
 AE%\ \ \ CC%\ \ \ FE%\ \ \ I\fIn\fP%\ \ \ MR%\ \ \ RC%\ \ \ TE%\ \ \ XP
-AI%\ \ \ CF%\ \ \ FF%\ \ \ IP%\ \ \ ND%\ \ \ RE%\ \ \ TH%\ \ \ 
-A\fIn\fP%\ \ \ CH%\ \ \ FG%\ \ \ IZ%\ \ \ NH%\ \ \ R\fIn\fP%\ \ \ TL%\ \ \ 
-AT%\ \ \ CM%\ \ \ FJ%\ \ \ KD%\ \ \ NL%\ \ \ RP%\ \ \ TM%\ \ \ 
+AI%\ \ \ CF%\ \ \ FF%\ \ \ IP%\ \ \ ND%\ \ \ RE%\ \ \ TH%\ \ \
+A\fIn\fP%\ \ \ CH%\ \ \ FG%\ \ \ IZ%\ \ \ NH%\ \ \ R\fIn\fP%\ \ \ TL%\ \ \
+AT%\ \ \ CM%\ \ \ FJ%\ \ \ KD%\ \ \ NL%\ \ \ RP%\ \ \ TM%\ \ \
 AU%\ \ \ CT%\ \ \ FK%\ \ \ KF%\ \ \ NP%\ \ \ RS%\ \ \ TQ%\ \ \ \fP
 .TE
 .poE
@@ -1097,7 +1097,7 @@ BE%\ \ \ GA%\ \ \ IK%\ \ \ KM%\ \ \ NA%\ \ \ PN%\ \ \ TB%\ \ \ XX
 BH%\ \ \ GW%\ \ \ IM%\ \ \ L1%\ \ \ NC%\ \ \ PO%\ \ \ TC%\ \ \ YE
 BI%\ \ \ H1%\ \ \ IP%\ \ \ LE%\ \ \ ND%\ \ \ PQ%\ \ \ TD%\ \ \ YY
 BQ%\ \ \ H2%\ \ \ IR%\ \ \ LL%\ \ \ NQ%\ \ \ PS%\ \ \ TK%\ \ \ ZN
-BW%\ \ \ H3%\ \ \ IS%\ \ \ LT%\ \ \ NS%\ \ \ PX%\ \ \ TN%\ \ \ 
+BW%\ \ \ H3%\ \ \ IS%\ \ \ LT%\ \ \ NS%\ \ \ PX%\ \ \ TN%\ \ \
 CW%\ \ \ H4%\ \ \ IT%\ \ \ MC%\ \ \ NX%\ \ \ QI%\ \ \ TQ%\ \ \ \fP
 .TE
 .poE
@@ -2416,5 +2416,3 @@ l:n:l:l:n.
 .TE
 .poE
 .ix	%end [pic] preprocessor, summary~of command~characters %key pic preprocessor, summary of command~characters
-
-

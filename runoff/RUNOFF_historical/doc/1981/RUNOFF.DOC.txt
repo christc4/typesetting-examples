@@ -680,7 +680,7 @@
 
         The following shows the uses of the case control characters:
 
-        ^HERE IS A ^SAMPLE ^SENTENCE IN ^^UPPER CASE\\ AND LOWER CASE.  
+        ^HERE IS A ^SAMPLE ^SENTENCE IN ^^UPPER CASE\\ AND LOWER CASE.
 
         becomes:
 
